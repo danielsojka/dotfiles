@@ -1,6 +1,6 @@
 [user]
 	name = Daniel Sojka
-	email = daniel@sojka.dev
+	email = {{ .email | quote }}
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
