@@ -1,9 +1,5 @@
-# To check differences between chezmoi and local files
-chezmoi diff
-
-# To try out template
+# To go to chezmoi managed files
 chezmoi cd
-chezmoi execute-template < dot_gitconfig.tmpl
 
 # To add new files to be tracked by chezmoi
 chezmoi add [FILE_NAME]
@@ -11,6 +7,13 @@ chezmoi add [FILE_NAME]
 # To add to chezmoi changes done on already tracked local files
 chezmoi re-add
 
+# To check differences between chezmoi and local files
+chezmoi diff
+
 # To apply chezmoi managed files into the system
 # It could prompt what to do in case it finds differences between chezmoi and local files
 chezmoi apply
+
+# To try out template
+chezmoi cd
+chezmoi execute-template < dot_gitconfig.tmpl
