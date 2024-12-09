@@ -1,3 +1,7 @@
 # To try out template
 chezmoi cd
 chezmoi execute-template < dot_gitconfig.tmpl
+
+# To apply chezmoi managed files into the system
+# It could prompt what to do in case it finds differences between chezmoi and local files
+chezmoi apply
