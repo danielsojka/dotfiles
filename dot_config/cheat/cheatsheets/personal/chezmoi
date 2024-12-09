@@ -1,3 +1,6 @@
+# To check differences between chezmoi and local files
+chezmoi diff
+
 # To try out template
 chezmoi cd
 chezmoi execute-template < dot_gitconfig.tmpl
