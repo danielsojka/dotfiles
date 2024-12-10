@@ -1,4 +1,4 @@
 README.md
-{{ if ne .device-type "personal" }}
+{{ if ne .device_type "personal" }}
 .config/nvim/lua/plugins/codecompanion.lua
 {{ end }}
