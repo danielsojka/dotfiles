@@ -9,6 +9,7 @@
 [data]
 email = "your@email.com"
 home = "/Users/your-user"
+device-type = "personal | work"
 ```
 
 3. Run `chezmoi init https://github.com/daniel.sojka/dotfiles.git`
