@@ -3,3 +3,4 @@ LICENSE
 {{ if ne .device_type "personal" }}
 .config/nvim/lua/plugins/codecompanion.lua
 {{ end }}
+.config/nvim/lazy-lock.json
