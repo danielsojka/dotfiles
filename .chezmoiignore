@@ -4,3 +4,4 @@ LICENSE
 .config/nvim/lua/plugins/codecompanion.lua
 {{ end }}
 .config/nvim/lazy-lock.json
+.config/nvim/lazyvim.json
