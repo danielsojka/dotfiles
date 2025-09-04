@@ -214,5 +214,3 @@ ctrl-alt-shift-9 = 'workspace prev --wrap-around'
 6 = 'main' # Main monitor
 7 = 'main' # Main monitor
 8 = 'main' # Main monitor
-
-# test change
