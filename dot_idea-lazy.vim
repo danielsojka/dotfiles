@@ -506,7 +506,12 @@ nnoremap Q @@
 " Custom mappings
 nmap ev <Action>(IntroduceVariable)
 nmap em <Action>(ExtractMethod)
-nmap ec <kfekg
 nmap ec <Action>(IntroduceConstant)
 nmap ef <Action>(IntroduceField)
 nmap ep <Action>(IntroduceParameter)
+
+vmap ev <Action>(IntroduceVariable)
+vmap em <Action>(ExtractMethod)
+vmap ec <Action>(IntroduceConstant)
+vmap ef <Action>(IntroduceField)
+vmap ep <Action>(IntroduceParameter)
