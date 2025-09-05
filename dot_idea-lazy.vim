@@ -504,3 +504,5 @@ nnoremap Q @@
 "   flash, grub-far, noice, trouble, mini.diff, oversear, copilotchat,
 "   dial, outline, md preview, harpoon, octo
 
+" Custom mappings
+nmap ev <Action>(IntroduceVariable)
