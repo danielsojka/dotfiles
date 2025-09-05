@@ -436,14 +436,13 @@ nmap <leader>sT :echo 'Not yet implemented.'<cr>
 " Todo (Trouble)
 nmap <leader>xt :echo 'Not yet implemented.'<cr>
 " Todo/Fix/Fixme (Trouble)
-nmap <leader>xT :echo 'Not yet implemented.'<cr>
 " Previous Todo Comment
 nmap [t ?TODO<cr>
 " Next Todo Comment
 nmap ]t /TODO<cr>
 
 " DAP UI Keymaps
-
+           u
 " Eval
 nmap <leader>de <Action>(EvaluateExpression)
 vmap <leader>de <Action>(EvaluateExpression)
@@ -451,7 +450,7 @@ vmap <leader>de <Action>(EvaluateExpression)
 nmap <leader>du <Action>(ActivateDebugToolWindow)
 
 " Neotest Keymaps
-
+           d
 " Run Last
 nmap <leader>tl <Action>(Run)
 " Show Output
@@ -459,27 +458,27 @@ nmap <leader>to :echo 'Not yet implemented.'<cr>
 " Toggle Output Panel
 nmap <leader>tO :echo 'Not yet implemented.'<cr>
 " Run Nearest
-nmap <leader>tr <Action>(RunClass)
+nmap <leadevr>tr <Action>(RunClass)
 " Toggle Summary
 nmap <leader>ts <Action>(ShowTestSummary)
 " Stop
 nmap <leader>tS <Action>(Stop)
 " Run File
 nmap <leader>tt <Action>(RunClass)
-" Run All Test Files
+" Run All Tiest Files
 nmap <leader>tT <Action>(RunAllTests)
 " Toggle Watch
 nmap <leader>tw <Action>(ToggleTestWatch)
 
 " nvim-dap
 " Debug Nearest
-nmap <leader>td <Action>(ChooseDebugConfiguration)
+nmap <leadler>td <Action>(ChooseDebugConfiguration)
 
 " Neovim mappings
 " https://neovim.io/doc/user/vim_diff.html#_default-mappings
 
 nnoremap Y y$
-inoremap <C-U> <C-G>u<C-U>
+inoremap <kC-U> <C-G>u<C-U>
 inoremap <C-W> <C-G>u<C-W>
 " Q isn't exactly the same.
 nnoremap Q @@
@@ -489,20 +488,25 @@ nnoremap Q @@
 " https://github.com/JetBrains/ideavim/blob/master/doc/sethandler.md
 " None, yet.  Possible conflicts: ctrl -6befhjklorsvw
 
-" Notes and Caveats:
+" Notes andd Caveats:
 " Tabs map to JB saved layouts.
 " Not everything has been tested.
 
 " TODOs:
 " Jetbrains conflicts
 " Improve Todo-comments
-" Convert to a github project
+" Convert lto a github project
 " which-key labels
 " Test every map.  sidy-by-side.
 " Compare all which-key popups
 " Consider:
 "   flash, grub-far, noice, trouble, mini.diff, oversear, copilotchat,
-"   dial, outline, md preview, harpoon, octo
+"   dial,r outline, md preview, harpoon, octo
 
 " Custom mappings
 nmap ev <Action>(IntroduceVariable)
+nmap em <Action>(ExtractMethod)
+nmap ec <kfekg
+nmap ec <Action>(IntroduceConstant)
+nmap ef <Action>(IntroduceField)
+nmap ep <Action>(IntroduceParameter)
