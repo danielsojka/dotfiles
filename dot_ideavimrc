@@ -1,18 +1,57 @@
 " ============================================================================
 " .ideavimrc - IntelliJ IDEA Vim Configuration
 " ============================================================================
-" Quick Reference:
-" ----------------
+" PHILOSOPHY: LSP-Standard & IDE-Agnostic Keybindings
+"
+" This configuration uses portable keybindings based on the Language Server
+" Protocol (LSP) standard. The keybinding schema works across editors:
+"   - IntelliJ IDEA (IdeaVim) - current
+"   - Neovim (nvim-lspconfig)
+"   - Zed Editor
+"   - VSCode (with Vim extension)
+"
+" Only the implementation changes per IDE (e.g., <Action>() calls vs LSP functions)
+" Your muscle memory stays consistent across all editors.
+"
+" ============================================================================
+" QUICK REFERENCE
+" ============================================================================
 " nmap  - Normal mode mapping (when you're NOT typing text)
 " vmap  - Visual mode mapping (when you have text selected)
 " imap  - Insert mode mapping (when you're actively typing)
-" map   - Mapping for multiple modes
 "
 " <leader> - Your custom prefix key (set to spacebar below)
 "            Press space, then another key for custom commands
 "
 " <Action>(ActionName) - Calls an IntelliJ IDEA action
 "                        Find actions with :actionlist
+"
+" ============================================================================
+" KEYBINDING SCHEMA (Portable Across Editors)
+" ============================================================================
+"
+" NO LEADER (Vim-native extensions):
+"   g{motion}  - Go/Navigate using LSP
+"     gd - Go to Definition
+"     gr - Go to References
+"     gI - Go to Implementation
+"     gy - Go to Type definition
+"
+" LEADER-BASED (IDE/LSP features):
+"   <leader>c  - Code actions (rename, format, comment, actions)
+"   <leader>r  - Refactor operations (extract: variable, method, etc.)
+"   <leader>f  - Find/Files operations
+"   <leader>s  - Search operations (grep, symbols)
+"   <leader>g  - Git operations (commit, blame, history)
+"   <leader>b  - Buffer management
+"   <leader>w  - Window management
+"
+" DESIGN PRINCIPLES:
+"   1. Voice-friendly: "code rename", "go definition", "find files"
+"   2. Mnemonic: First letter = category, second letter = action
+"   3. No leader 'g' = Quick navigation (Vim-style)
+"   4. Leader 'g' = Git operations (IDE-style)
+"   5. All leader commands have which-key descriptions
 "
 " ============================================================================
 
@@ -26,7 +65,7 @@ let mapleader=" "
 " Show relative line numbers (easier to jump lines with 5j, 10k, etc.)
 set relativenumber
 
-" Keep 4 lines visible above/below cursor when scrolling
+" Keep 16 lines visible above/below cursor when scrolling
 set scrolloff=16
 
 " Disable line wrapping (long lines extend beyond screen)
@@ -40,93 +79,123 @@ set which-key
 set surround
 
 " ============================================================================
-" NAVIGATION
+" NAVIGATION (No Leader - Vim-Style Extensions)
 " ============================================================================
+" These extend Vim's 'g' prefix for movement commands
+" Portable: Work the same in Neovim, Zed, VSCode with LSP
 
 " Go to definition of symbol under cursor
+let g:WhichKeyDesc_goto_definition = "gd Go to definition"
 nmap gd <Action>(GotoDeclaration)
 
-" ============================================================================
-" REFACTORING
-" ============================================================================
+" Go to type definition of symbol under cursor
+let g:WhichKeyDesc_goto_type = "gt Go to type definition"
+nmap gt <Action>(GotoTypeDeclaration)
 
-" Rename current file
-nmap <leader>cR <Action>(RenameFile)
+" ============================================================================
+" CODE ACTIONS (Leader + c)
+" ============================================================================
+" Universal LSP operations for code manipulation
+
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKeyDesc_code = "<leader>c Code"
 
 " Rename symbol under cursor (variables, methods, classes, etc.)
+let g:WhichKeyDesc_code_rename = "<leader>cr Rename symbol"
 nmap <leader>cr <Action>(RenameElement)
 
+" Rename current file
+let g:WhichKeyDesc_code_rename_file = "<leader>cR Rename file"
+nmap <leader>cR <Action>(RenameFile)
+
+" Format code (entire file or selection)
+let g:WhichKeyDesc_code_format = "<leader>cf Format code"
+nmap <leader>cf <Action>(ReformatCode)
+vmap <leader>cf <Action>(ReformatCode)
+
+" Show code action menu (quick fixes, refactoring suggestions)
+let g:WhichKeyDesc_code_actions = "<leader>ca Show code actions"
+nmap <leader>ca <Action>(ShowIntentionActions)
+vmap <leader>ca <Action>(ShowIntentionActions)
+
+" Comment/uncomment line or selection
+let g:WhichKeyDesc_code_comment = "<leader>cc Comment/uncomment"
+nmap <leader>cc <Action>(CommentByLineComment)
+vmap <leader>cc <Action>(CommentByLineComment)
+
+" Generate menu (constructors, getters/setters, toString, etc.)
+let g:WhichKeyDesc_code_generate = "<leader>cg Generate code"
+nmap <leader>cg <Action>(Generate)
+
 " ============================================================================
-" EXTRACT REFACTORINGS
+" REFACTOR/EXTRACT OPERATIONS (Leader + r)
 " ============================================================================
 " These work in both normal mode (on current line) and visual mode (on selection)
+" Group under 'r' for Refactor to keep extracts together
 
-" Extract Variable - Turn expression into a variable
-nmap <leader>ev <Action>(IntroduceVariable)
-vmap <leader>ev <Action>(IntroduceVariable)
+let g:WhichKeyDesc_refactor = "<leader>r Refactor"
 
-" Extract Method - Turn code block into a method
-nmap <leader>em <Action>(ExtractMethod)
-vmap <leader>em <Action>(ExtractMethod)
+" Refactor: Extract Variable - Turn expression into a variable
+let g:WhichKeyDesc_refactor_variable = "<leader>rv Refactor variable"
+nmap <leader>rv <Action>(IntroduceVariable)
+vmap <leader>rv <Action>(IntroduceVariable)
 
-" Extract Constant - Turn value into a constant
-nmap <leader>ec <Action>(IntroduceConstant)
-vmap <leader>ec <Action>(IntroduceConstant)
+" Refactor: Extract Method - Turn code block into a method
+let g:WhichKeyDesc_refactor_method = "<leader>rm Refactor method"
+nmap <leader>rm <Action>(ExtractMethod)
+vmap <leader>rm <Action>(ExtractMethod)
 
-" Extract Field - Turn expression into a class field
-nmap <leader>ef <Action>(IntroduceField)
-vmap <leader>ef <Action>(IntroduceField)
+" Refactor: Extract Constant - Turn value into a constant
+let g:WhichKeyDesc_refactor_constant = "<leader>rc Refactor constant"
+nmap <leader>rc <Action>(IntroduceConstant)
+vmap <leader>rc <Action>(IntroduceConstant)
 
-" Extract Parameter - Turn expression into a method parameter
-nmap ep <Action>(IntroduceParameter)
-vmap ep <Action>(IntroduceParameter)
+" Refactor: Extract Field - Turn expression into a class field
+let g:WhichKeyDesc_refactor_field = "<leader>rf Refactor field"
+nmap <leader>rf <Action>(IntroduceField)
+vmap <leader>rf <Action>(IntroduceField)
 
-" ============================================================================
-" WHICH-KEY DESCRIPTIONS
-" ============================================================================
-" Define custom descriptions for which-key popup
-" Format: let g:WhichKeyDesc_<unique_id> = "<keys> <description>"
-
-" Leader key groups
-let g:WhichKeyDesc_leader = "<leader> Leader key"
-let g:WhichKeyDesc_code = "<leader>c Code actions"
-let g:WhichKeyDesc_extract = "<leader>e Extract actions"
-
-" Code actions
-let g:WhichKeyDesc_code_rename_file = "<leader>cR Rename current file"
-let g:WhichKeyDesc_code_rename = "<leader>cr Rename symbol"
-
-" Extract refactorings (these show for both normal and visual mode)
-let g:WhichKeyDesc_extract_variable = "<leader>ev Extract to variable"
-let g:WhichKeyDesc_extract_method = "<leader>em Extract to method"
-let g:WhichKeyDesc_extract_constant = "<leader>ec Extract to constant"
-let g:WhichKeyDesc_extract_field = "<leader>ef Extract to field"
-let g:WhichKeyDesc_extract_parameter = "<leader>ep Extract to parameter"
-
-" Surround operations
-let g:WhichKeyDesc_surround_change = "cs Change surrounding chars (e.g., cs\"' )"
-let g:WhichKeyDesc_surround_delete = "ds Delete surrounding chars (e.g., ds\" )"
-let g:WhichKeyDesc_surround_you = "ys Add surrounding chars (e.g., ysiw\" )"
-
-" Built-in plugins
-let g:WhichKeyDesc_matchit = "g% Jump to matching bracket/tag"
-let g:WhichKeyDesc_commentary = "gc Comment/uncomment code"
-let g:WhichKeyDesc_commentary_line = "gcc Toggle comment on line"
+" Refactor: Extract Parameter - Turn expression into a method parameter
+let g:WhichKeyDesc_refactor_parameter = "<leader>rp Refactor parameter"
+nmap <leader>rp <Action>(IntroduceParameter)
+vmap <leader>rp <Action>(IntroduceParameter)
 
 " ============================================================================
-" NOTES
+" PLUGIN KEYBINDINGS
+" ============================================================================
+
+" Surround plugin operations (no leader)
+let g:WhichKeyDesc_surround_change = "cs Change surrounding chars (e.g., cs\"')"
+let g:WhichKeyDesc_surround_delete = "ds Delete surrounding chars (e.g., ds\")"
+let g:WhichKeyDesc_surround_you = "ys Add surrounding chars (e.g., ysiw\")"
+
+" ============================================================================
+" NOTES & USEFUL COMMANDS
 " ============================================================================
 "
-" Useful commands to remember:
-" :actionlist           - Show all available IntelliJ actions
-" :actionlist <pattern> - Search for actions (e.g., :actionlist extract)
-" :map                  - Show all current mappings
+" IdeaVim Commands:
+"   :actionlist           - Show all available IntelliJ actions
+"   :actionlist <pattern> - Search for actions (e.g., :actionlist extract)
+"   :map                  - Show all current mappings
 "
-" Common Vim motions to practice:
-" {     - Move up one paragraph
-" }     - Move down one paragraph
-" %     - Jump to matching bracket
-" *     - Search for word under cursor
+" Common Vim Motions to Practice:
+"   {     - Move up one paragraph
+"   }     - Move down one paragraph
+"   %     - Jump to matching bracket
+"   *     - Search for word under cursor
+"   da(   - Delete around parentheses
+"   viw   - Visual select inner word
 "
+" Navigation (no leader):
+"   gd    - Go to definition
+"   gr    - Go to references
+"   gI    - Go to implementation
+"   gy    - Go to type definition
+"
+" Next Steps to Add:
+"   - Find/Files operations (<leader>f)
+"   - Search operations (<leader>s)
+"   - Git operations (<leader>g)
+"   - Buffer management (<leader>b)
+"   - Window management (<leader>w)
 " ============================================================================
-
