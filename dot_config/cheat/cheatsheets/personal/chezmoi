@@ -17,3 +17,6 @@ chezmoi apply
 # To try out template
 chezmoi cd
 chezmoi execute-template < dot_gitconfig.tmpl
+
+# Update dotfiles from remote repo (pull + apply)
+chezmoi update
