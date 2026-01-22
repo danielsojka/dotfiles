@@ -1,2 +1,132 @@
-source ~/.idea-lazy.vim
+" ============================================================================
+" .ideavimrc - IntelliJ IDEA Vim Configuration
+" ============================================================================
+" Quick Reference:
+" ----------------
+" nmap  - Normal mode mapping (when you're NOT typing text)
+" vmap  - Visual mode mapping (when you have text selected)
+" imap  - Insert mode mapping (when you're actively typing)
+" map   - Mapping for multiple modes
+"
+" <leader> - Your custom prefix key (set to spacebar below)
+"            Press space, then another key for custom commands
+"
+" <Action>(ActionName) - Calls an IntelliJ IDEA action
+"                        Find actions with :actionlist
+"
+" ============================================================================
+
+" ============================================================================
+" BASIC SETTINGS
+" ============================================================================
+
+" Set leader key to spacebar (press space + another key for commands)
+let mapleader=" "
+
+" Show relative line numbers (easier to jump lines with 5j, 10k, etc.)
+set relativenumber
+
+" Keep 4 lines visible above/below cursor when scrolling
+set scrolloff=16
+
+" Disable line wrapping (long lines extend beyond screen)
+set nowrap
+
+" Enable which-key plugin for command hints
+" (Install "Which-Key" plugin from JetBrains Marketplace first)
+set which-key
+
+" Enable vim-surround for bracket/quote manipulation (cs, ds, ys commands)
+set surround
+
+" ============================================================================
+" NAVIGATION
+" ============================================================================
+
+" Go to definition of symbol under cursor
+nmap gd <Action>(GotoDeclaration)
+
+" ============================================================================
+" REFACTORING
+" ============================================================================
+
+" Rename current file
+nmap <leader>cR <Action>(RenameFile)
+
+" Rename symbol under cursor (variables, methods, classes, etc.)
+nmap <leader>cr <Action>(RenameElement)
+
+" ============================================================================
+" EXTRACT REFACTORINGS
+" ============================================================================
+" These work in both normal mode (on current line) and visual mode (on selection)
+
+" Extract Variable - Turn expression into a variable
+nmap <leader>ev <Action>(IntroduceVariable)
+vmap <leader>ev <Action>(IntroduceVariable)
+
+" Extract Method - Turn code block into a method
+nmap <leader>em <Action>(ExtractMethod)
+vmap <leader>em <Action>(ExtractMethod)
+
+" Extract Constant - Turn value into a constant
+nmap <leader>ec <Action>(IntroduceConstant)
+vmap <leader>ec <Action>(IntroduceConstant)
+
+" Extract Field - Turn expression into a class field
+nmap <leader>ef <Action>(IntroduceField)
+vmap <leader>ef <Action>(IntroduceField)
+
+" Extract Parameter - Turn expression into a method parameter
+nmap ep <Action>(IntroduceParameter)
+vmap ep <Action>(IntroduceParameter)
+
+" ============================================================================
+" WHICH-KEY DESCRIPTIONS
+" ============================================================================
+" Define custom descriptions for which-key popup
+" Format: let g:WhichKeyDesc_<unique_id> = "<keys> <description>"
+
+" Leader key groups
+let g:WhichKeyDesc_leader = "<leader> Leader key"
+let g:WhichKeyDesc_code = "<leader>c Code actions"
+let g:WhichKeyDesc_extract = "<leader>e Extract actions"
+
+" Code actions
+let g:WhichKeyDesc_code_rename_file = "<leader>cR Rename current file"
+let g:WhichKeyDesc_code_rename = "<leader>cr Rename symbol"
+
+" Extract refactorings (these show for both normal and visual mode)
+let g:WhichKeyDesc_extract_variable = "<leader>ev Extract to variable"
+let g:WhichKeyDesc_extract_method = "<leader>em Extract to method"
+let g:WhichKeyDesc_extract_constant = "<leader>ec Extract to constant"
+let g:WhichKeyDesc_extract_field = "<leader>ef Extract to field"
+let g:WhichKeyDesc_extract_parameter = "<leader>ep Extract to parameter"
+
+" Surround operations
+let g:WhichKeyDesc_surround_change = "cs Change surrounding chars (e.g., cs\"' )"
+let g:WhichKeyDesc_surround_delete = "ds Delete surrounding chars (e.g., ds\" )"
+let g:WhichKeyDesc_surround_you = "ys Add surrounding chars (e.g., ysiw\" )"
+
+" Built-in plugins
+let g:WhichKeyDesc_matchit = "g% Jump to matching bracket/tag"
+let g:WhichKeyDesc_commentary = "gc Comment/uncomment code"
+let g:WhichKeyDesc_commentary_line = "gcc Toggle comment on line"
+
+" ============================================================================
+" NOTES
+" ============================================================================
+"
+" Useful commands to remember:
+" :actionlist           - Show all available IntelliJ actions
+" :actionlist <pattern> - Search for actions (e.g., :actionlist extract)
+" :map                  - Show all current mappings
+"
+" Common Vim motions to practice:
+" {     - Move up one paragraph
+" }     - Move down one paragraph
+" %     - Jump to matching bracket
+" *     - Search for word under cursor
+"
+" ============================================================================
 
