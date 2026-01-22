@@ -68,6 +68,9 @@ set relativenumber
 " Keep 16 lines visible above/below cursor when scrolling
 set scrolloff=16
 
+" Keep which-key menu open indefinitely (close with Esc or complete command)
+set notimeout
+
 " Disable line wrapping (long lines extend beyond screen)
 set nowrap
 
@@ -168,6 +171,53 @@ vmap <leader>rp <Action>(IntroduceParameter)
 let g:WhichKeyDesc_surround_change = "cs Change surrounding chars (e.g., cs\"')"
 let g:WhichKeyDesc_surround_delete = "ds Delete surrounding chars (e.g., ds\")"
 let g:WhichKeyDesc_surround_you = "ys Add surrounding chars (e.g., ysiw\")"
+
+" ============================================================================
+" TEST OPERATIONS (Leader + t)
+" ============================================================================
+" Comprehensive test workflow: run, navigate, debug, and manage tests
+
+let g:WhichKeyDesc_test = "<leader>t Test"
+
+" Run test at cursor (method/function level)
+let g:WhichKeyDesc_test_run = "<leader>tt Test nearest"
+nmap <leader>tt <Action>(RunClass)
+
+" Run all tests in current file/class
+let g:WhichKeyDesc_test_file = "<leader>tf Test file"
+nmap <leader>tf <Action>(RunClass)
+
+" Rerun last test
+let g:WhichKeyDesc_test_last = "<leader>tl Test last"
+nmap <leader>tl <Action>(Run)
+
+" Run all tests (select from run configurations)
+let g:WhichKeyDesc_test_all = "<leader>tT Test all"
+nmap <leader>tT <Action>(ChooseRunConfiguration)
+
+" Rerun failed tests only
+let g:WhichKeyDesc_test_failed = "<leader>tr Test failed"
+nmap <leader>tr <Action>(RerunFailedTests)
+
+" Debug test at cursor
+let g:WhichKeyDesc_test_debug = "<leader>td Test debug"
+nmap <leader>td <Action>(DebugClass)
+
+" Debug last test
+let g:WhichKeyDesc_test_debug_last = "<leader>tD Test debug last"
+nmap <leader>tD <Action>(Debug)
+
+" Toggle between test and implementation
+let g:WhichKeyDesc_test_goto = "<leader>tg Go to test/implementation"
+nmap <leader>tg <Action>(GotoTest)
+
+" Show test results window
+let g:WhichKeyDesc_test_output = "<leader>to Test output"
+nmap <leader>to <Action>(ActivateRunToolWindow)
+
+" Stop running tests
+let g:WhichKeyDesc_test_stop = "<leader>ts Test stop"
+nmap <leader>ts <Action>(Stop)
 
 " ============================================================================
 " NOTES & USEFUL COMMANDS
