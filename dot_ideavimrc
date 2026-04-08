@@ -131,37 +131,37 @@ let g:WhichKeyDesc_code_generate = "<leader>cg Generate code"
 nmap <leader>cg <Action>(Generate)
 
 " ============================================================================
-" REFACTOR/EXTRACT OPERATIONS (Leader + r)
+" EXTRACT OPERATIONS (Leader + e)
 " ============================================================================
 " These work in both normal mode (on current line) and visual mode (on selection)
-" Group under 'r' for Refactor to keep extracts together
+" Group under 'e' for Extract to keep extracts together
 
-let g:WhichKeyDesc_refactor = "<leader>r Refactor"
+let g:WhichKeyDesc_refactor = "<leader>e Extract"
 
 " Refactor: Extract Variable - Turn expression into a variable
-let g:WhichKeyDesc_refactor_variable = "<leader>rv Refactor variable"
-nmap <leader>rv <Action>(IntroduceVariable)
-vmap <leader>rv <Action>(IntroduceVariable)
+let g:WhichKeyDesc_refactor_variable = "<leader>ev Refactor variable"
+nmap <leader>ev <Action>(IntroduceVariable)
+vmap <leader>ev <Action>(IntroduceVariable)
 
 " Refactor: Extract Method - Turn code block into a method
-let g:WhichKeyDesc_refactor_method = "<leader>rm Refactor method"
-nmap <leader>rm <Action>(ExtractMethod)
-vmap <leader>rm <Action>(ExtractMethod)
+let g:WhichKeyDesc_refactor_method = "<leader>em Refactor method"
+nmap <leader>em <Action>(ExtractMethod)
+vmap <leader>em <Action>(ExtractMethod)
 
 " Refactor: Extract Constant - Turn value into a constant
-let g:WhichKeyDesc_refactor_constant = "<leader>rc Refactor constant"
-nmap <leader>rc <Action>(IntroduceConstant)
-vmap <leader>rc <Action>(IntroduceConstant)
+let g:WhichKeyDesc_refactor_constant = "<leader>ec Refactor constant"
+nmap <leader>ec <Action>(IntroduceConstant)
+vmap <leader>ec <Action>(IntroduceConstant)
 
 " Refactor: Extract Field - Turn expression into a class field
-let g:WhichKeyDesc_refactor_field = "<leader>rf Refactor field"
-nmap <leader>rf <Action>(IntroduceField)
-vmap <leader>rf <Action>(IntroduceField)
+let g:WhichKeyDesc_refactor_field = "<leader>ef Refactor field"
+nmap <leader>ef <Action>(IntroduceField)
+vmap <leader>ef <Action>(IntroduceField)
 
 " Refactor: Extract Parameter - Turn expression into a method parameter
-let g:WhichKeyDesc_refactor_parameter = "<leader>rp Refactor parameter"
-nmap <leader>rp <Action>(IntroduceParameter)
-vmap <leader>rp <Action>(IntroduceParameter)
+let g:WhichKeyDesc_refactor_parameter = "<leader>ep Refactor parameter"
+nmap <leader>ep <Action>(IntroduceParameter)
+vmap <leader>ep <Action>(IntroduceParameter)
 
 " ============================================================================
 " PLUGIN KEYBINDINGS
