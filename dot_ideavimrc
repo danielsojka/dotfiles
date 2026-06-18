@@ -96,6 +96,16 @@ let g:WhichKeyDesc_goto_type = "gt Go to type definition"
 nmap gt <Action>(GotoTypeDeclaration)
 
 " ============================================================================
+" INTELLIJ OPERATIONS (Leader + i)
+" ============================================================================
+" Navigation specific to working within IntelliJ
+
+let g:WhichKeyDesc_intellij = "<leader>i Intellij"
+
+let g:WhichKeyDesc_intellij_terminal = "<leader>it Terminal"
+nmap <leader>it <Action>(ActivateTerminalToolWindow)
+
+" ============================================================================
 " CODE ACTIONS (Leader + c)
 " ============================================================================
 " Universal LSP operations for code manipulation
