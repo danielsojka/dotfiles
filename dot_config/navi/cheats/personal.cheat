@@ -1,15 +1,5 @@
-% personal
+% chezmoi
 
-# Say hello to someone
-echo Hello, <name>!
+# Update Chezmoi
+chezmoi update
 
-# Print a greeting in a chosen mood
-echo "<greeting>, world"
-
-# Show the current date
-date
-
-# Print the current directory
-pwd
-
-$ greeting: echo -e "Hi\nHowdy\nGreetings"
