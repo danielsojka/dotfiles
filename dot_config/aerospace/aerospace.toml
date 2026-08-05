@@ -63,8 +63,6 @@ outer.right = 0
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 # 'main' binding mode must be always presented
 [mode.main.binding]
-ctrl-alt-shift-0 = 'workspace next --wrap-around'
-ctrl-alt-shift-9 = 'workspace prev --wrap-around'
 ctrl-up = 'workspace next --wrap-around'
 ctrl-down = 'workspace prev --wrap-around'
 
