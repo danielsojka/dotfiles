@@ -65,6 +65,8 @@ outer.right = 0
 [mode.main.binding]
 ctrl-alt-shift-0 = 'workspace next --wrap-around'
 ctrl-alt-shift-9 = 'workspace prev --wrap-around'
+ctrl-up = 'workspace next --wrap-around'
+ctrl-down = 'workspace prev --wrap-around'
 
 # All possible keys:
 # - Letters.        a, b, c, ..., z
