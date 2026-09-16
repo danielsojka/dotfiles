@@ -61,7 +61,7 @@ matches:
         params:
           format: "%m_%Y"
           offset: -3888000
-  - trigger: ":dra"
+  - trigger: ";dra"
     replace: "DRA {{output}}"
     vars:
       - name: output
