@@ -61,3 +61,10 @@ matches:
         params:
           format: "%m_%Y"
           offset: -3888000
+  - trigger: ":dra"
+    replace: "DRA {{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "gdate -d '1 month ago' +01/%m/%Y"
