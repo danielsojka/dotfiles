@@ -67,4 +67,4 @@ matches:
       - name: output
         type: shell
         params:
-          cmd: "/opt/homebrew/bin/gdate -d '1 month ago' +01/%m/%Y"
+          cmd: "gdate -d '1 month ago' +01/%m/%Y"
