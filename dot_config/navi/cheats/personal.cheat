@@ -3,3 +3,7 @@
 # Update Chezmoi
 chezmoi update
 
+# Edit and apply a chezmoi-managed file
+chezmoi edit --apply <file>
+
+$ file: chezmoi managed --path-style=absolute
