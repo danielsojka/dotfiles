@@ -6,4 +6,10 @@ chezmoi update
 # Edit and apply a chezmoi-managed file
 chezmoi edit --apply <file>
 
+# Re-add local changes to chezmoi source
+chezmoi re-add <file>
+
+# Show diff for a chezmoi-managed file
+chezmoi diff <file>
+
 $ file: chezmoi managed --path-style=absolute
