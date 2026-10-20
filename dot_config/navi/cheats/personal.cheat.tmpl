@@ -12,6 +12,9 @@ chezmoi re-add <file>
 
 # Make dotfile a chezmoi template
 chezmoi chattr +template <file>
+
+# Stop tracking chezmoi-managed file
+chezmoi forget <file>
 {{ end }}
 
 # Show diff for a chezmoi-managed file
