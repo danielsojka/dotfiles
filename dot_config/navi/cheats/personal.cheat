@@ -12,6 +12,9 @@ chezmoi re-add <file>
 # Show diff for a chezmoi-managed file
 chezmoi diff <file>
 
+# Make dotfile a chezmoi template
+chezmoi chattr +template <file>
+
 $ file: chezmoi managed --path-style=absolute
 
 % navi
