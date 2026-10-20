@@ -20,7 +20,9 @@ chezmoi diff <file>
 
 $ file: chezmoi managed --path-style=absolute
 
+{{- if eq .device_type "personal" }}
 % navi
 
 # Update personal navi cheats
 nvim ~/.config/navi/cheats/personal.cheat
+{{ end }}
