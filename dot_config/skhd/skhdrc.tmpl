@@ -26,7 +26,13 @@ apps < o : open -a "Obsidian"; skhd -k "escape"
 apps < escape    ; default
 
 # apps -> j : JetBrains
+
+{{- if eq .device_type "personal" }}
 apps_j < i : open -a "IntelliJ IDEA Community Edition"; skhd -k "escape"
+{{- else if eq .device_type "work" }}
+apps_j < i : open -a "IntelliJ IDEA"; skhd -k "escape"
+{{ end -}}
+
 apps_j < w : open -a "WebStorm"; skhd -k "escape"
 apps_j < escape    ; default
 
