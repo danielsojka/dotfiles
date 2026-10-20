@@ -1,0 +1,40 @@
+# ---------- mode declarations ----------
+:: default
+:: leader     @
+:: apps       @
+:: apps_j     @   # apps -> j (JetBrains) -> ...
+:: urls       @
+:: urls_p     @   # urls -> p -> ...
+
+# ---------- enter / exit leader ----------
+default < ctrl - space ; leader
+leader  < escape       ; default
+
+# ---------- leader: pick a group ----------
+leader < a ; apps
+leader < u ; urls
+
+# ---------- apps ----------
+# unique letters run directly, colliding letters open a sub-group
+apps < j ; apps_j
+apps < b : open -a "Bruno"; skhd -k "escape"
+apps < c : open -a "Google Chrome"; skhd -k "escape"
+apps < f : open -a "Firefox"; skhd -k "escape"
+apps < d : open -a "DBeaver"; skhd -k "escape"
+apps < g : open -a "Ghostty"; skhd -k "escape"
+apps < o : open -a "Obsidian"; skhd -k "escape"
+apps < escape    ; default
+
+# apps -> j : JetBrains
+apps_j < i : open -a "IntelliJ IDEA Community Edition"; skhd -k "escape"
+apps_j < w : open -a "WebStorm"; skhd -k "escape"
+apps_j < escape    ; default
+
+# ---------- urls ----------
+urls < m : open "https://chat.mistral.ai"; skhd -k "escape"
+urls < p ; urls_p
+urls < escape    ; default
+
+# urls -> p : Proton
+urls_p < m : open "https://mail.proton.me"; skhd -k "escape"
+urls_p < escape    ; default
