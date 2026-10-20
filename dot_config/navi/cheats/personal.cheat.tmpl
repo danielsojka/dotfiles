@@ -3,17 +3,20 @@
 # Update Chezmoi
 chezmoi update
 
+{{- if eq .device_type "personal" }}
 # Edit and apply a chezmoi-managed file
 chezmoi edit --apply <file>
 
 # Re-add local changes to chezmoi source
 chezmoi re-add <file>
 
+# Make dotfile a chezmoi template
+chezmoi chattr +template <file>
+{{ end }}
+
 # Show diff for a chezmoi-managed file
 chezmoi diff <file>
 
-# Make dotfile a chezmoi template
-chezmoi chattr +template <file>
 
 $ file: chezmoi managed --path-style=absolute
 
