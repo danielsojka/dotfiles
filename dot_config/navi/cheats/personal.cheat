@@ -13,3 +13,8 @@ chezmoi re-add <file>
 chezmoi diff <file>
 
 $ file: chezmoi managed --path-style=absolute
+
+% navi
+
+# Update personal navi cheats
+nvim ~/.config/navi/cheats/personal.cheat
