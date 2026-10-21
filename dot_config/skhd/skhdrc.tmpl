@@ -4,6 +4,7 @@
 :: apps       @
 :: apps_j     @
 :: apps_s     @
+:: apps_c     @
 
 # ---------- enter / exit leader ----------
 default < ctrl - space ; leader
@@ -17,9 +18,9 @@ apps < escape    ; default
 
 apps < j ; apps_j
 apps < s ; apps_s
+apps < c ; apps_c
 
 apps < b : open -a "Bruno"; skhd -k "escape"
-apps < c : open -a "Google Chrome"; skhd -k "escape"
 apps < f : open -a "Firefox"; skhd -k "escape"
 apps < d : open -a "DBeaver"; skhd -k "escape"
 apps < g : open -a "Ghostty"; skhd -k "escape"
@@ -41,6 +42,12 @@ apps_s < escape    ; default
 
 apps_s < i : open -a "Signal"; skhd -k "escape"
 apps_s < i : open -a "Super Productivity"; skhd -k "escape"
+
+# ---------- apps-c ----------
+apps_c < escape    ; default
+
+apps_c < r : open -a "Google Chrome"; skhd -k "escape"
+apps_c < a : open -a "Calculator"; skhd -k "escape"
 
 {{- if eq .device_type "work" }}
 .load "work.skhdrc"
