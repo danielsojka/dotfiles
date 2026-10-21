@@ -33,6 +33,10 @@ apps_j < i : open -a "IntelliJ IDEA"; skhd -k "escape"
 apps_j < w : open -a "WebStorm"; skhd -k "escape"
 apps_j < escape    ; default
 
+{{- if eq .device_type "personal" }}
+.load "personal.skhdrc"
+{{ end }}
+
 {{- if eq .device_type "work" }}
 .load "work.skhdrc"
 {{ end }}
