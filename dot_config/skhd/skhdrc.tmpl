@@ -2,7 +2,8 @@
 :: default
 :: leader     @
 :: apps       @
-:: apps_j     @   # apps -> j (JetBrains) -> ...
+:: apps_j     @
+:: apps_s     @
 
 # ---------- enter / exit leader ----------
 default < ctrl - space ; leader
@@ -12,17 +13,20 @@ leader  < escape       ; default
 leader < a ; apps
 
 # ---------- apps ----------
-# unique letters run directly, colliding letters open a sub-group
+apps < escape    ; default
+
 apps < j ; apps_j
+apps < s ; apps_s
+
 apps < b : open -a "Bruno"; skhd -k "escape"
 apps < c : open -a "Google Chrome"; skhd -k "escape"
 apps < f : open -a "Firefox"; skhd -k "escape"
 apps < d : open -a "DBeaver"; skhd -k "escape"
 apps < g : open -a "Ghostty"; skhd -k "escape"
 apps < o : open -a "Obsidian"; skhd -k "escape"
-apps < escape    ; default
 
-# apps -> j : JetBrains
+# ---------- apps-j ----------
+apps_j < escape    ; default
 
 {{- if eq .device_type "personal" }}
 apps_j < i : open -a "IntelliJ IDEA Community Edition"; skhd -k "escape"
@@ -31,11 +35,12 @@ apps_j < i : open -a "IntelliJ IDEA"; skhd -k "escape"
 {{ end }}
 
 apps_j < w : open -a "WebStorm"; skhd -k "escape"
-apps_j < escape    ; default
 
-{{- if eq .device_type "personal" }}
-.load "personal.skhdrc"
-{{ end }}
+# ---------- apps-s ----------
+apps_s < escape    ; default
+
+apps_j < i : open -a "Signal"; skhd -k "escape"
+apps_j < i : open -a "Super Productivity"; skhd -k "escape"
 
 {{- if eq .device_type "work" }}
 .load "work.skhdrc"
