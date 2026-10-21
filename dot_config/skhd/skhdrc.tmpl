@@ -39,8 +39,8 @@ apps_j < w : open -a "WebStorm"; skhd -k "escape"
 # ---------- apps-s ----------
 apps_s < escape    ; default
 
-apps_j < i : open -a "Signal"; skhd -k "escape"
-apps_j < i : open -a "Super Productivity"; skhd -k "escape"
+apps_s < i : open -a "Signal"; skhd -k "escape"
+apps_s < i : open -a "Super Productivity"; skhd -k "escape"
 
 {{- if eq .device_type "work" }}
 .load "work.skhdrc"
